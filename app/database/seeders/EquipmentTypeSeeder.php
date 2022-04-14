@@ -2,19 +2,18 @@
 
 namespace Database\Seeders;
 
+use App\Models\EquipmentType;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class EquipmentTypeSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            EquipmentTypeSeeder::class,
-        ]);
+        EquipmentType::factory(10)->create();
     }
 }
