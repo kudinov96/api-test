@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\EquipmentTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("equipment", [EquipmentController::class, "find"]);
+Route::get("equipment/{id}", [EquipmentController::class, "read"]);
+Route::post("equipment", [EquipmentController::class, "create"]);
+Route::put("equipment/{id}", [EquipmentController::class, "update"]);
+Route::delete("equipment/{id}", [EquipmentController::class, "delete"]);
+
+Route::get("equipment-type", [EquipmentTypeController::class, "find"]);
