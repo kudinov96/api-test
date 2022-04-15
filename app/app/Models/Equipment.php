@@ -14,7 +14,7 @@ class Equipment extends Model
 {
     use HasFactory;
 
-    protected $table = "equipment_type";
+    protected $table = "equipment";
 
     protected $fillable = [
         "equipment_type_id",

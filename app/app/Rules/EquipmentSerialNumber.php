@@ -26,6 +26,7 @@ class EquipmentSerialNumber implements Rule
      */
     public function passes($attribute, $value): bool
     {
+        return true;
         dd($this->equipment_type_id);
         return preg_match();
     }
