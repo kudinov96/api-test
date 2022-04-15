@@ -27,7 +27,9 @@ class EquipmentTest extends FeatureTestCase
             ]
         ];
 
-       $this->postJson("/api/equipment", $payload);
+       $response = $this->postJson("/api/equipment", $payload);
+
+       $this->responseDd($response, $payload);
 
        $item_1 = $this->stateBySerialNumber($payload["equipments"][0]["serial_number"]);
        $item_2 = $this->stateBySerialNumber($payload["equipments"][1]["serial_number"]);

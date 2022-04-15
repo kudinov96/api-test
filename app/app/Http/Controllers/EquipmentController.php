@@ -24,7 +24,7 @@ class EquipmentController extends Controller
     {
         $items = $action->handle($request);
 
-        return EquipmentResource::collection($items);
+        return new EquipmentCollection($items);
     }
 
     public function update(int $id, EquipmentRequest $request)
