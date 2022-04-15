@@ -6,9 +6,7 @@ use App\Rules\EquipmentSerialNumber;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @property int    $equipment_type_id
- * @property string $serial_number
- * @property string $description
+ * @property array $equipments
  */
 class EquipmentRequest extends FormRequest
 {
@@ -30,9 +28,15 @@ class EquipmentRequest extends FormRequest
     public function rules()
     {
         return [
-            "equipment_type_id" => ["required", "integer", "exists:equipment_type,id"],
-            "serial_number"     => ["required", "string", "unique:equipment,serial_number", new EquipmentSerialNumber($this->equipment_type_id)],
-            "description"       => ["nullable", "string", "max:10000"],
+            "equipments.*.equipment_type_id" => ["required", "integer", "exists:equipment_type,id"],
+            "equipments.*.serial_number"     => [
+                "required",
+                "string",
+                "unique:equipment,serial_number",
+                "distinct",
+                new EquipmentSerialNumber(current($this->equipments)["equipment_type_id"]),
+            ],
+            "equipments.*.description"       => ["nullable", "string", "max:10000"],
         ];
     }
 }

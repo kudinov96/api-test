@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Equipment\CreateEquipment;
+use App\Actions\Equipment\CreateEquipments;
 use App\Http\Requests\EquipmentRequest;
+use App\Http\Resources\EquipmentCollection;
+use App\Http\Resources\EquipmentResource;
 use Illuminate\Http\Request;
 
 class EquipmentController extends Controller
@@ -18,10 +20,11 @@ class EquipmentController extends Controller
 
     }
 
-    public function create(EquipmentRequest $request, CreateEquipment $action)
+    public function create(EquipmentRequest $request, CreateEquipments $action)
     {
-        $item = $action->handle($request);
-        dd($item);
+        $items = $action->handle($request);
+
+        return EquipmentResource::collection($items);
     }
 
     public function update(int $id, EquipmentRequest $request)
