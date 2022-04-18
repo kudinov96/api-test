@@ -1,18 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\EquipmentType;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class EquipmentCollection extends ResourceCollection
+class EquipmentTypeCollection extends ResourceCollection
 {
-    /**
-     * The resource that this resource collects.
-     *
-     * @var string
-     */
-    public $collects = EquipmentResource::class;
-
     /**
      * Transform the resource collection into an array.
      *
@@ -21,9 +14,6 @@ class EquipmentCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            "success" => true,
-            "result" => $this->collection,
-        ];
+        return parent::toArray($request);
     }
 }

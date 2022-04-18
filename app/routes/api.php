@@ -20,10 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("equipment", [EquipmentController::class, "find"]);
-Route::get("equipment/{id}", [EquipmentController::class, "read"]);
-Route::post("equipment", [EquipmentController::class, "create"]);
-Route::put("equipment/{id}", [EquipmentController::class, "update"]);
-Route::delete("equipment/{id}", [EquipmentController::class, "delete"]);
+Route::group(["middleware" => "auth:sanctum"], function() {
+    Route::get("equipment", [EquipmentController::class, "find"]);
+    Route::get("equipment/{id}", [EquipmentController::class, "read"]);
+    Route::post("equipment", [EquipmentController::class, "create"]);
+    Route::put("equipment/{id}", [EquipmentController::class, "update"]);
+    Route::delete("equipment/{id}", [EquipmentController::class, "delete"]);
 
-Route::get("equipment-type", [EquipmentTypeController::class, "find"]);
+    Route::get("equipment-type", [EquipmentTypeController::class, "find"]);
+});
