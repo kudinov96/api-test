@@ -2,11 +2,12 @@
 
 namespace App\Rules;
 
+use App\Models\EquipmentType;
 use Illuminate\Contracts\Validation\Rule;
 
 class EquipmentSerialNumber implements Rule
 {
-    private int $equipment_type_id;
+    private EquipmentType $equipment_type;
 
     /**
      * Create a new rule instance.
@@ -15,7 +16,7 @@ class EquipmentSerialNumber implements Rule
      */
     public function __construct(int $equipment_type_id)
     {
-        $this->equipment_type_id = $equipment_type_id;
+        $this->equipment_type = EquipmentType::find($equipment_type_id);
     }
 
     /**
@@ -26,9 +27,7 @@ class EquipmentSerialNumber implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return true;
-        dd($this->equipment_type_id);
-        return preg_match();
+        return (bool) preg_match($this->equipment_type->mask_regex, $value);
     }
 
     /**
@@ -38,6 +37,6 @@ class EquipmentSerialNumber implements Rule
      */
     public function message(): string
     {
-        return ':attribute error message';
+        return ":attribute must match the mask \"{$this->equipment_type->mask}\"";
     }
 }

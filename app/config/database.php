@@ -63,6 +63,12 @@ return [
             ]) : [],
         ],
 
+        'sqlite_memory' => [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
@@ -143,5 +149,4 @@ return [
         ],
 
     ],
-
 ];

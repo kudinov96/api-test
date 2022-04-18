@@ -2,13 +2,13 @@
 
 namespace App\Actions\Equipment;
 
-use App\Http\Requests\EquipmentRequest;
+use App\Http\Requests\EquipmentsRequest;
 use App\Models\Equipment;
 use Illuminate\Support\Collection;
 
 class CreateEquipments
 {
-    public function handle(EquipmentRequest $request): Collection
+    public function handle(EquipmentsRequest $request): Collection
     {
         $collection = new Collection();
 
