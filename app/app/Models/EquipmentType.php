@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property string $name
@@ -25,6 +26,11 @@ class EquipmentType extends Model
     protected $appends = [
         "mask_regex",
     ];
+
+    public function equipments(): BelongsTo
+    {
+        return $this->belongsTo(Equipment::class);
+    }
 
     public function getMaskRegexAttribute(): string
     {
@@ -53,5 +59,10 @@ class EquipmentType extends Model
         $mask_regex .= "/";
 
         return $mask_regex;
+    }
+
+    public static function getTableName()
+    {
+        return (new self())->getTable();
     }
 }
