@@ -1,10 +1,11 @@
 # Api test
 
 ### Instructions:
-1. [ ] docker-compose up -d --build
-2. [ ] bash composer install
-3. [ ] bash artisan key:generate
-4. [ ] bash artisan migrate
+1. copy **app/.env.example** to **app/.env**
+2. docker-compose up -d --build
+3. bash composer install
+4. bash artisan key:generate
+5. bash artisan migrate
 
 <hr>
 

@@ -20,7 +20,7 @@ class EquipmentController extends Controller
      * @api {get} /api/equipment-type find
      * @apiDescription Find EquipmentType
      * @apiGroup EquipmentType
-     * @apiParam {integer} [id] ID
+     * @apiParam {integer} [id]   ID
      * @apiParam {string}  [name] Name
      * @apiParam {string}  [mask] Mask
      * @apiSuccessExample {json} Success
